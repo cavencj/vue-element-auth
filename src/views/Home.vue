@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <ly-head></ly-head>
+    <ly-content></ly-content>
+    <ly-foot></ly-foot>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import LyHead from '@/layout/LyHead'
+import LyContent from '@/layout/LyContent'
+import LyFoot from '@/layout/LyFoot'
 export default {
-  name: "home",
+  name: 'Home',
   components: {
-    HelloWorld
+    LyHead,
+    LyContent,
+    LyFoot
   }
-};
+}
 </script>
