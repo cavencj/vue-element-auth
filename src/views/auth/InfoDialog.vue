@@ -1,7 +1,5 @@
 <template>
-  <div class="info-dialog">
-    <el-dialog title="用户信息" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
-  </div>
+  <el-dialog title="用户信息" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
 </template>
 <script>
 export default {

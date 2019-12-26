@@ -47,7 +47,7 @@ export default {
       return this.$store.getters.menuList
     },
     defaultMenu() {
-      return this.menuList && this.menuList.length ? this.menuList[0] : {}
+      return this.$store.getters.currentMenu
     },
     currentComp() {
       let authOption = this.$store.getters.authOption
@@ -64,6 +64,7 @@ export default {
   methods: {
     changeMenu(currentMenu) {
       this.$store.dispatch('setCurrentMenu', currentMenu)
+      this.$router.push(currentMenu.path)
     },
     logout() {
       this.$router.push('login')

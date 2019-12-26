@@ -13,7 +13,11 @@
       :collapse-transition="false"
     >
       <template v-for="item in menuList">
-        <el-menu-item v-if="!item.children || item.children.length === 0" :index="item.path" :key="item.id">
+        <el-menu-item
+          v-if="!item.children || item.children.length === 0"
+          :index="item.path"
+          :key="item.id"
+        >
           <svg-icon v-if="item.icon" :icon-class="item.icon || ''" class-name="menu-icon" />
           <span slot="title">{{ item.name }}</span>
         </el-menu-item>

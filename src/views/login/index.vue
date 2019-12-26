@@ -22,7 +22,12 @@
           </el-input>
         </el-form-item>
         <el-form-item prop="code">
-          <el-input v-model="loginForm.code" auto-complete="off" placeholder="验证码" style="width:60%">
+          <el-input
+            v-model="loginForm.code"
+            auto-complete="off"
+            placeholder="验证码"
+            style="width:60%"
+          >
             <i class="el-icon-success" slot="prefix"></i>
           </el-input>
           <span class="code-img"></span>
@@ -59,12 +64,18 @@ export default {
     login() {
       this.$refs['login-form'].validate(valid => {
         if (valid) {
-          this.$store.dispatch('setMenuList', [
+          let menuList = [
             {
               id: '1',
               name: '首页',
               path: '/dashboard',
               icon: 'dashboard'
+            },
+            {
+              id: '8',
+              name: '应用管理',
+              path: '/project',
+              icon: 'project'
             },
             {
               id: '2',
@@ -102,9 +113,11 @@ export default {
               path: '/setting',
               icon: 'setting'
             }
-          ])
+          ]
+          this.$store.dispatch('setMenuList', menuList)
           this.$store.dispatch('setSessionId', '1')
           this.$store.dispatch('setToken', '123121')
+          this.$store.dispatch('setCurrentMenu', menuList[0])
           this.$router.push('/dashboard')
           this.loading = true
         } else {

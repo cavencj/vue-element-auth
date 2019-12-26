@@ -1,21 +1,12 @@
 <template>
-  <div class="user">
-    <div class="search-form"></div>
-    <div class="result-list"></div>
-    <div class="page"></div>
-  </div>
+  <div class="user"></div>
 </template>
 
 <script>
 export default {
   name: 'User',
   data() {
-    return {
-      searchForm: {
-        username: '',
-        name: ''
-      }
-    }
+    return {}
   }
 }
 </script>

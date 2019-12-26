@@ -1,7 +1,5 @@
 <template>
-  <div class="passwold-dialog">
-    <el-dialog title="密码修改" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
-  </div>
+  <el-dialog title="密码修改" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
 </template>
 <script>
 export default {

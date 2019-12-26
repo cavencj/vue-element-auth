@@ -2,7 +2,7 @@
  * @Author: Caven
  * @Date: 2019-12-23 13:28:54
  * @Last Modified by: Caven
- * @Last Modified time: 2019-12-25 13:01:56
+ * @Last Modified time: 2019-12-26 09:59:43
  */
 import Vue from 'vue'
 import appLoader from './App.Loader'
@@ -22,7 +22,10 @@ import appLoader from './App.Loader'
             if (to.path === '/login') {
               next()
             } else {
-              let filter = store.getters.menuList.filter(item => to.path === item.path)
+              let filter = []
+              if (store.getters.menuList) {
+                filter = store.getters.menuList.filter(item => to.path === item.path)
+              }
               if (store.getters.sessionId && store.getters.token && filter.length) {
                 next()
               } else {

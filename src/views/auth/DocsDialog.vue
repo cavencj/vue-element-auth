@@ -1,7 +1,5 @@
 <template>
-  <div class="docs-dialog">
-    <el-dialog title="使用手册" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
-  </div>
+  <el-dialog title="使用手册" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
 </template>
 <script>
 export default {

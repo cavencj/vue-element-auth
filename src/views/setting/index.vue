@@ -1,9 +1,9 @@
 <template>
-  <div class="log"></div>
+  <div class="setting"></div>
 </template>
 <script>
 export default {
-  name: 'Log'
+  name: 'Setting'
 }
 </script>
 <style lang="scss" scoped></style>
