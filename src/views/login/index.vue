@@ -21,8 +21,17 @@
             <i class="el-icon-lock" slot="prefix"></i>
           </el-input>
         </el-form-item>
+        <el-form-item prop="code">
+          <el-input v-model="loginForm.code" auto-complete="off" placeholder="验证码" style="width:60%">
+            <i class="el-icon-success" slot="prefix"></i>
+          </el-input>
+          <span class="code-img"></span>
+        </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="btn" @click="login">登录</el-button>
+          <el-button :loading="isLoading" type="primary" class="btn" @click="login">
+            <span v-if="isLoading">登录中</span>
+            <span v-else>登录</span>
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -33,13 +42,16 @@ export default {
   name: 'Login',
   data() {
     return {
+      isLoading: false,
       loginForm: {
         username: '',
-        passworld: ''
+        passworld: '',
+        code: ''
       },
       formRules: {
-        username: [{ required: true, message: '请输入用户名' }],
-        passworld: [{ required: true, message: '请输入密码' }]
+        username: [{ required: true, message: '请输入用户名', trigger: 'changed' }],
+        passworld: [{ required: true, message: '请输入密码', trigger: 'changed' }],
+        code: [{ required: true, message: '请输入验证码', trigger: 'changed' }]
       }
     }
   },
@@ -47,7 +59,54 @@ export default {
     login() {
       this.$refs['login-form'].validate(valid => {
         if (valid) {
-          //
+          this.$store.dispatch('setMenuList', [
+            {
+              id: '1',
+              name: '首页',
+              path: '/dashboard',
+              icon: 'dashboard'
+            },
+            {
+              id: '2',
+              name: '部门管理',
+              path: '/dept',
+              icon: 'dept'
+            },
+            {
+              id: '3',
+              name: '人员管理',
+              path: '/user',
+              icon: 'user'
+            },
+            {
+              id: '4',
+              name: '资源管理',
+              path: '/resource',
+              icon: 'resource'
+            },
+            {
+              id: '5',
+              name: '角色管理',
+              path: '/role',
+              icon: 'role'
+            },
+            {
+              id: '6',
+              name: '系统日志',
+              path: '/log',
+              icon: 'log'
+            },
+            {
+              id: '7',
+              name: '系统设置',
+              path: '/setting',
+              icon: 'setting'
+            }
+          ])
+          this.$store.dispatch('setSessionId', '1')
+          this.$store.dispatch('setToken', '123121')
+          this.$router.push('/dashboard')
+          this.loading = true
         } else {
           return false
         }
@@ -77,10 +136,10 @@ export default {
   background: url('../../assets/images/bg.png') no-repeat fixed center;
   .wrapper {
     position: absolute;
-    top: calc(calc(100% - 350px) / 2);
+    top: calc(calc(100% - 400px) / 2);
     left: calc(calc(100% - 300px) / 2);
     width: 300px;
-    height: 350px;
+    height: 400px;
     background: rgba(4, 27, 90, 0.1);
     border-radius: 4px;
     border: 1px solid rgba(92, 172, 247, 0.4);
@@ -121,6 +180,9 @@ export default {
       margin-top: 15px;
       width: 100%;
       font-size: 1.2rem;
+    }
+    .code-img {
+      width: 40%;
     }
   }
 }

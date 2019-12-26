@@ -2,7 +2,7 @@
  * @Author: Caven
  * @Date: 2019-12-23 13:38:32
  * @Last Modified by: Caven
- * @Last Modified time: 2019-12-23 18:30:35
+ * @Last Modified time: 2019-12-25 12:46:40
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -20,10 +20,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+    redirect: '/dashboard',
     children: [
       {
         path: '/dashboard',
-        name: 'login',
+        name: 'dashboard',
         component: () => import('@/views/dashboard')
       }
     ]

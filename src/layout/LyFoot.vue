@@ -9,3 +9,8 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.ly-foot {
+}
+</style>
