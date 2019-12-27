@@ -1,21 +1,29 @@
 <template>
-  <el-dialog title="使用手册" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
+  <el-dialog title="使用手册" :visible.sync="dialogVisible" @closed="handleClosed"></el-dialog>
 </template>
 <script>
 export default {
   name: 'DocsDialog',
-  data() {
-    return {
-      dialogTableVisible: false
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
     }
   },
-  activated() {
-    this.dialogTableVisible = true
+  data() {
+    return {
+      dialogVisible: false
+    }
   },
   methods: {
     handleClosed() {
-      this.$store.dispatch('setAuthOption', '')
+      this.$emit('on-closed')
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.dialogVisible = this.visible
+    })
   }
 }
 </script>

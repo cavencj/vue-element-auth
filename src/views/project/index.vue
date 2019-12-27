@@ -74,7 +74,7 @@
       </el-row>
     </div>
     <div class="page"></div>
-    <project-dialog :visible.sync="proDialogVisible" :mode="dialogModel" @on-closed="closeDialog"></project-dialog>
+    <project-dialog :visible.sync="proDialogVisible" :mode="proDialogModel" @on-closed="closeDialog"></project-dialog>
   </div>
 </template>
 

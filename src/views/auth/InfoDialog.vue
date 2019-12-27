@@ -1,21 +1,30 @@
 <template>
-  <el-dialog title="用户信息" :visible.sync="dialogTableVisible" @closed="handleClosed"></el-dialog>
+  <el-dialog title="用户信息" :visible.sync="dialogVisible" @closed="handleClosed"></el-dialog>
 </template>
 <script>
 export default {
   name: 'InfoDialog',
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
-      dialogTableVisible: false
+      dialogVisible: false
     }
   },
-  activated() {
-    this.dialogTableVisible = true
-  },
+
   methods: {
     handleClosed() {
-      this.$store.dispatch('setAuthOption', '')
+      this.$emit('on-closed')
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.dialogVisible = this.visible
+    })
   }
 }
 </script>

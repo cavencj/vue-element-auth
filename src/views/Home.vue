@@ -13,9 +13,7 @@
       <ly-content></ly-content>
       <ly-foot></ly-foot>
     </div>
-    <keep-alive>
-      <component :is="currentComp"></component>
-    </keep-alive>
+    <component :is="currentComp" :visible="dialogVisible" @on-closed="closeDialog"></component>
   </div>
 </template>
 
@@ -59,6 +57,9 @@ export default {
         return 'DocsDialog'
       }
       return null
+    },
+    dialogVisible() {
+      return !!this.$store.getters.authOption
     }
   },
   methods: {
@@ -69,6 +70,9 @@ export default {
     logout() {
       this.$router.push('login')
       sessionStorage.clear()
+    },
+    closeDialog() {
+      this.$store.dispatch('setAuthOption', '')
     }
   },
   mounted() {

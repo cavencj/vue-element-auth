@@ -4,13 +4,9 @@
       <el-avatar shape="square" size="medium" class="avatar"></el-avatar>
       <i class="el-icon-caret-bottom"></i>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item
-          v-for="(item, index) in authOptions"
-          :key="index"
-          :command="item.command"
-          :divided="item.divided"
-          >{{ item.name }}</el-dropdown-item
-        >
+        <el-dropdown-item v-for="(item, index) in authOptions" :key="index" :command="item.command" :divided="item.divided">{{
+          item.name
+        }}</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
